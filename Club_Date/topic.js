@@ -1,10 +1,10 @@
 //array for storing data
-let topicsArray = ["尚未開學",
-"國定假日",
-"環境準備",
-"隨機性",
-"國定假日",
-"條件判斷"
+let topicsArray = ["上課",
+"上課",
+"上課",
+" ",
+"上課",
+"上課"
 ];
 //Date
 

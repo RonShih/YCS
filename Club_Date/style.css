@@ -1,13 +1,22 @@
 body{
-    text-align:center;
+    text-align:left;
 }
 
 table{
-    width: 60%;
+    width: 70%;
     margin: auto;
     font-size: 1.5em;
+    background-color: white;
+    color: black;
 }
 
-td{
-    border-bottom: 1px solid blue;
+td, tr, th{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+.schedule{
+    text-align: center;
 }
