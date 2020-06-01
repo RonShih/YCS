@@ -2,7 +2,7 @@
 //ctx: HTML5 canvas使用
 //currentImgMainX, currentImgMainY:決定主角所在座標
 //imgMountain, imgMain, imgEnemy ： 障礙物、主角、敵人的圖片物件
-
+// 725 45
 let mapArray, ctx, currentImgMainX, currentImgMainY;
 let imgMountain, imgMain, imgEnemy;
 
