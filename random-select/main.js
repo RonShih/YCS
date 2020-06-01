@@ -37,8 +37,8 @@ $(document).ready(function(){
         $("input").click(function(){
             if(val.checked){
                 $("#paper_abstract").attr("src", pictures[i]);
-                $("a").click(function(){
-                    $("a").attr("href", paper[i]);
+                $("#link").click(function(){
+                    $("#link").attr("href", paper[i]);
                 });
             }
         });
