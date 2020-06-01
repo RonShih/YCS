@@ -1,0 +1,10 @@
+.paper_name{
+    text-align: left;
+}
+.show_image{
+    text-align: center;
+    font-size: 20px;
+}
+#paper_abstract{
+    border-style: solid;
+}

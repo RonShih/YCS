@@ -5,10 +5,16 @@ window.onload=function(){
 */
 //method2. 
 let pictures = [
-    "random-select/img/ramen.jpg",
-    "random-select/img/rice.jpg",
-    "random-select/img/dumplings.jpg"
+    "img/OCSSD_abstract.png",
+    "img/bottleneck_abstract.png",
+    "img/CAFTL_abstract.png"
 ];
+let paper = [
+    'https://www.usenix.org/system/files/conference/fast17/fast17-bjorling.pdf',
+    'https://static.usenix.org/event/fast08/tech/full_papers/zhu/zhu.pdf',
+    'https://static.usenix.org/events/fast11/tech/full_papers/Chen.pdf',
+
+]
 
 $(document).ready(function(){
     $("input").click(function(){
@@ -22,5 +28,19 @@ $(document).ready(function(){
         //method1. $("a").eq(rdm).show();       
         //method2. 
         $("#random-pic").attr("src", pictures[rdm]);
+    });
+});
+
+
+$(document).ready(function(){
+    $.each($(":radio"),function(i,val){ //$.each($(":radio"), function(i,val){...});for all radio button
+        $("input").click(function(){
+            if(val.checked){
+                $("#paper_abstract").attr("src", pictures[i]);
+                $("a").click(function(){
+                    $("a").attr("href", paper[i]);
+                });
+            }
+        });
     });
 });

@@ -33,22 +33,22 @@
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">RandomSelect</a>
+            <a class="nav-link" href="#">My Studies</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Club_date.html">Club Date</a>
+            <a class="nav-link" href="Club_date.html">My Schedule</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Mind-test.html">Mind Test</a>
+            <a class="nav-link" href="Mind-test.html">a small test</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="PDP.html">PDP TEST</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="RPG.html">RPG GAME</a>
+            <a class="nav-link" href="RPG.html">Guide</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="youtube.html">Youtube 心情點唱機</a>
+            <a class="nav-link" href="youtube.html">Video</a>
           </li>
         </ul>
         <!--
@@ -72,23 +72,36 @@
       <!-- Three columns of text below the carousel -->
 
       <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider">
-
+      <br><br><br><br>
+      <!--<hr class="featurette-divider">-->
+      <h1>Check out my recent studies!</h1>
+      <br>
+      <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
       <h1 id="random-result">?</h1>
       <input type="button" value="What would you like for dinner?">
-      <ol id="choices">
+      <ul id="choices">
         <li>Ramen</li>
         <li>Rice</li>
         <li>Dumplings</li>
-      </ol>
+      </ul>
+      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@--> 
       <!--mothod1
             <a><img src="..."> </a>
             <a><img src="..."> </a>
             <a><img src="..."> </a>
         -->
-      <img id="random-pic" src="random-select/img/ramen.jpg" width="30%" />
-
+      <div id = "paper_name">
+        <input type="radio" name = "paper_name" value="0" checked="true"> LightNVM: The Linux Open-Channel SSD Subsystem<br>
+        <input type="radio" name = "paper_name" value="1"> Avoiding the Disk Bottleneck in the Data Domain Deduplication File System.<br>
+        <input type="radio" name = "paper_name" value="2"> CAFTL: A Content-Aware Flash Translation Layer Enhancing the Lifespan
+        of Flash Memory based Solid State Drives<br>
+      </div>
+      <br>
+      <div class = "show_image">
+        <a href="https://www.usenix.org/system/files/conference/fast17/fast17-bjorling.pdf" target="_blank" title="View the paper">View the paper</a>
+        <br><br>
+        <img id="paper_abstract" class="image" src="img/OCSSD_abstract.png" height = "500px">
+      </div>
       <hr class="featurette-divider">
 
       <!-- /END THE FEATURETTES -->
@@ -114,7 +127,6 @@
   <script src="dist/js/bootstrap.min.js"></script>
   <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
   <script src="assets/js/vendor/holder.min.js"></script>
-  <script src="random-select/data.js"></script>
   <script src="random-select/main.js"></script>
 </body>
 
