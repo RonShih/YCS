@@ -8,7 +8,7 @@
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
 
-  <title>My Schedule</title>
+  <title>Class Schedule</title>
 
   <!-- Bootstrap core CSS -->
   <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -78,9 +78,18 @@
       
       
       <div class = "schedule">
-        <input type="date" id="club_input_date" value = "2020-06-01" min = "2020-06-01" max = "2020-09-1">
-        <button id="submit">submit</button>
-        <br><br>
+        <!--<input type="date" id="club_input_date" value = "2020-06-01" min = "2020-06-01" max = "2020-09-1">-->
+        <select name="YourLocation" id="input_option">
+          <option value="" selected disabled hidden></option> 
+          <option value="0">大一上(1061)</option>
+          <option value="1">大一下(1062)</option>
+          <option value="2">大二上(1071)</option>
+          <option value="3">大二下(1072)</option>
+          <option value="4">大三上(1081)</option>
+          <option value="5">大三下(1082)</option>
+        </select>
+        <p>Choose a semester</p>
+        <!--<button id="submit">submit</button>-->
         <table id="club_courseTable"></table>
       <!--mothod1
             <a><img src="..."> </a>
@@ -88,7 +97,7 @@
             <a><img src="..."> </a>
         -->
 
-      <hr class="featurette-divider">
+        <hr class="featurette-divider">
       </div>
       <!-- /END THE FEATURETTES -->
 

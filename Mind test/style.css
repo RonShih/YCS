@@ -1,3 +1,27 @@
 body{
-    text-align: center;
+    text-align: left;
 }
+.options, #startButton{ 
+    text-align: left;
+    position: relative;
+    left: 200px;
+}
+.question{ 
+    text-align: left;
+    position: relative;
+    left: 300px;
+}
+
+#myProgress {
+    position: relative;
+    width: 500px;
+    height: 45px;
+    background-color: lightgray;
+  }
+  
+  #myBar {
+    position: absolute;
+    width: 1%;
+    height: 100%;
+    background-color: #4CAF50;
+  }

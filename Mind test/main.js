@@ -1,9 +1,12 @@
 $(document).ready(function(){
+    $('#myProgress').hide();
     let currentQuiz=null;//目前作答到第幾題
+    let grades = 0;
     $('#startButton').click(function(){//按下按鈕後觸發事件
+        $('#myProgress').hide();
         if(currentQuiz ==null){
             currentQuiz = 0;//設定目前作答到第0題
-            $('#question').text(questions[0].question);//顯示題目
+            $('#question').text(currentQuiz+1 + ". " + questions[0].question);//顯示題目
             $('#options').empty();//清空選項區域
             for(let x = 0; x<questions[0].answers.length;x++){
                 $('#options').append(
@@ -19,16 +22,27 @@ $(document).ready(function(){
             $.each(
                 $(":radio"),function(i,val){ //$.each($(":radio"), function(i,val){...});for all radio button
                     if(val.checked){
-                        if(isNaN(questions[currentQuiz].answers[i][1])){//分成是否已產生結果(A~D)    
-                            let finalResult = questions[currentQuiz].answers[i][1];//最終成果
-                            $("#question").text(finalAnswers[finalResult][0]);
-                            $("#options").empty();
-                            $("#options").append(finalAnswers[finalResult][1]+"<br><br>");
-                            currentQuiz=null;
+                        if(currentQuiz == 4){//finish 
+                            if(questions[currentQuiz].answers[i][1] == 1)
+                                grades += questions[currentQuiz].answers[i][1];
+                            console.log(currentQuiz, grades);
+                            grades = grades * 20;
+                            if(grades >= 60)
+                                $("#question").text("Congradulation! you pass the test (" +grades+"%)");
+                            else
+                                $("#question").text("Sorry! you failed! Here's the GUIDE!");
+                            $('#options').empty();//清空選項區域
+                            $('#myProgress').show();
+                            move(grades);
+                            grades = 0;
+                            currentQuiz = null;
                             $("#startButton").attr("value","Restart");
                         }else{//還在作答
-                            currentQuiz = questions[currentQuiz].answers[i][1]-1;
-                            $('#question').text(questions[currentQuiz].question);//顯示題目
+                            if(questions[currentQuiz].answers[i][1] == 1)
+                                grades += questions[currentQuiz].answers[i][1];
+                            console.log(currentQuiz, grades);
+                            currentQuiz++;
+                            $('#question').text(currentQuiz+1 + ". " + questions[currentQuiz].question);//顯示題目
                             $('#options').empty();//清空選項區域
                             for(let x = 0; x<questions[currentQuiz].answers.length;x++){
                                 $('#options').append(
@@ -38,11 +52,30 @@ $(document).ready(function(){
                                     "</label><br><br>"
                                 );
                             }
+                            
                         }
-                        return false
+                        return false;
                     }
                 }
             );
         }
     });
 });
+
+function move(grades) {
+    var elem = document.getElementById("myBar");   
+    var width = 1;
+    var id = setInterval(frame, 10);
+    if(grades<60)
+        elem.style.backgroundColor = 'red';
+    else
+        elem.style.backgroundColor = '#4CAF50';
+    function frame() {
+      if (width >= grades) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width + '%'; 
+      }
+    }
+  }
