@@ -8,32 +8,23 @@ let imgMountain, imgMain, imgEnemy;
 
 //當網頁元件載入完成要做的事情
 $(document).ready(function () {
+    $("#startButton").hide();
+    $("#talkBox").hide();
     //遊戲地圖
     //0:可走、1:障礙、2:終點、3:敵人
-    mapArray = [0, 1, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 3, 3, 3, 3, 3,
-        0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 3, 3, 3, 3, 3,];
+    mapArray = [1, 1, 1, 1, 1,
+                1, 0, 0, 0, 1,
+                1, 0, 0, 3, 1,
+                1, 0, 0, 0, 1,
+                1, 1, 1, 1, 1];
     ctx = $("#myCanvas")[0].getContext("2d");
     //擺主角
     imgMain = new Image();
     imgMain.src = "RPG/images/spriteSheet.png";
-    currentImgMainX = 0;
-    currentImgMainY = 0;
+    currentImgMainX = 100;
+    currentImgMainY = 200;
     imgMain.onload = function () {
-        ctx.drawImage(imgMain, 0, 0, 80, 130, currentImgMainX, currentImgMainY, 200, 200);
+        ctx.drawImage(imgMain, 0, 0, 80, 130, currentImgMainX, currentImgMainY, 100, 100);
     };
     //擺上障礙物與敵人
     imgMountain = new Image();
@@ -45,17 +36,16 @@ $(document).ready(function () {
         imgEnemy.onload = function () {
             for (let x in mapArray) {
                 if (mapArray[x] == 1) {
-                    if (mapArray[parseInt(x) + 1] == 1)
-                        ctx.drawImage(imgMountain, 32, 64, 32, 32, x % 16 * 200, Math.floor(x / 16) * 200, 400, 200);
-                    else
-                        ctx.drawImage(imgMountain, 32, 64, 32, 32, x % 16 * 200, Math.floor(x / 16) * 200, 200, 200);
+                    ctx.drawImage(imgMountain, 32, 192, 32, 32, x % 5 * 100, Math.floor(x / 5) * 100, 100, 100);
                 } else if (mapArray[x] == 3) {
-                    ctx.drawImage(imgEnemy, 7, 40, 104, 135, x % 16 * 200, Math.floor(x / 16) * 200, 200, 200);
+                    ctx.drawImage(imgEnemy, 7, 40, 75, 135, x % 5 * 100, Math.floor(x / 5) * 100, 100, 100);
                 }
             }
         };
     };
 });
+
+
 let targetImgMainX, targetImgMainY, targetBlock, cutImagePositionX;
 //當有人按下按鍵後要做的事情
 $(document).keydown(function (event) {
@@ -68,25 +58,24 @@ $(document).keydown(function (event) {
     
     switch(event.code){
         case "ArrowLeft":
-            targetImgMainX = currentImgMainX - 200;
+            targetImgMainX = currentImgMainX - 100;
             targetImgMainY = currentImgMainY;
             cutImagePositionX = 175;
             break;
         case "ArrowUp":
             targetImgMainX = currentImgMainX;
-            targetImgMainY = currentImgMainY - 200;
+            targetImgMainY = currentImgMainY - 100;
             cutImagePositionX = 355;
             break;
         case "ArrowRight":
-            targetImgMainX = currentImgMainX + 200;
+            targetImgMainX = currentImgMainX + 100;
             targetImgMainY = currentImgMainY;
             cutImagePositionX = 540;
             break;
         case "ArrowDown":
             targetImgMainX = currentImgMainX;
-            targetImgMainY = currentImgMainY + 200;
+            targetImgMainY = currentImgMainY + 100;
             cutImagePositionX = 0;
-            console.log(event);
             break;
         default:
             return;
@@ -96,25 +85,24 @@ $(document).keydown(function (event) {
     //console.log(targetImgMainY);
     //console.log(cutImagePositionX);
     //在邊界內
-    if (targetImgMainX <= 3000 && targetImgMainX >= 0 && targetImgMainY <= 3000 && targetImgMainY >= 0) {
-        targetBlock = targetImgMainX / 200 + targetImgMainY / 200 * 16;
-
+    if (targetImgMainX < 500 && targetImgMainX >= 0 && targetImgMainY < 500 && targetImgMainY >= 0) {
+        targetBlock = targetImgMainX / 100 + targetImgMainY / 100 * 5;
     } else {//超出邊界
         targetBlock = -1;
     }
     //清除主角原本所在位置
-    ctx.clearRect(currentImgMainX, currentImgMainY, 200, 200);
+    ctx.clearRect(currentImgMainX, currentImgMainY, 100, 100);
     if (targetBlock == -1 || mapArray[targetBlock] == 1 || mapArray[targetBlock] == 3) {
         //所有異常(出界、遇到敵人、遇到障礙物都不動)
         //console.log(targetBlock);
     } else {//正常情況下設定新的位置
-        $("#talkBox").empty();
         currentImgMainX = targetImgMainX;
         currentImgMainY = targetImgMainY;
     }
     //在新的位置上畫上主角
-    ctx.drawImage(imgMain, cutImagePositionX, 0, 80, 130, currentImgMainX, currentImgMainY, 200, 200);
+    ctx.drawImage(imgMain, cutImagePositionX, 0, 80, 130, currentImgMainX, currentImgMainY, 100, 100);
     //對應文字顯示狀態
+    /*
     switch (mapArray[targetBlock]) {
         case undefined:
             $("#talkBox").text("邊界");
@@ -128,18 +116,32 @@ $(document).keydown(function (event) {
         case 3:
             $("#talkBox").text("有敵人");
             break;
-    }
+    }*/
 
 });
-
+let state = [7, 122, 200, 275, 350, 418, 485, 555, 625];
+let count = 0;
+//ctx.drawImage(imgEnemy, 7, 40, 104, 135, x % 5 * 100, Math.floor(x / 5) * 100, 100, 100);
 $(document).keydown(function (event) {
     switch (event.code) {
-        case "KeyZ":
+        case "Space":
             if (mapArray[targetBlock] == 3) {
-                ctx.clearRect(targetBlock % 16 * 200, Math.floor(targetBlock / 16) * 200, 200, 200);
-                ctx.drawImage(imgEnemy, 555, 40, 75, 135, targetBlock % 16 * 200, Math.floor(targetBlock / 16) * 200, 200, 200);
+                if(count < 8 && count >= 0){   
+                    count++;
+                    ctx.clearRect(targetBlock % 5 * 100, Math.floor(targetBlock / 5) * 100, 100, 100);
+                    ctx.drawImage(imgEnemy, state[count], 40, 75, 135, targetBlock % 5 * 100, Math.floor(targetBlock / 5) * 100, 100, 100);
+                }
+                else if(count >= 0){
+                    console.log(count);
+                    //count = 0;
+                    ctx.drawImage(imgMountain, 96, 160, 32, 32, targetBlock % 5 * 100, Math.floor(targetBlock / 5) * 100, 100, 100);
+                    count = -1;
+                    $("#startButton").show();
+                    $("#startButton").click(function(){
+                        $("#talkBox").show();
+                    });
+                }
             }
-            console.log(event);
             break;
         default:
             return;

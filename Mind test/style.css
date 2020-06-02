@@ -1,15 +1,5 @@
 body{
-    text-align: left;
-}
-.options, #startButton{ 
-    text-align: left;
-    position: relative;
-    left: 200px;
-}
-.question{ 
-    text-align: left;
-    position: relative;
-    left: 300px;
+    text-align: left
 }
 
 #myProgress {

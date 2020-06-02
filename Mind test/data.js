@@ -2,40 +2,40 @@ let questions = [
     {
         "question":"快閃記憶體的基本寫入單位為？",
         "answers":[
-            ["A. page",1],
-            ["B. block",0],
-            ["C. file",0]
+            ["page",1],
+            ["block",0],
+            ["file",0]
         ]
     },
     {
         "question":"快閃記憶體的基本抹除單位為？",
         "answers":[
-            ["A. page",0],
-            ["B. block",1],
-            ["C. file",0]
+            ["page",0],
+            ["block",1],
+            ["file",0]
         ]
     },
     {
         "question":"相變化記憶體透過改變何種性質來呈現資料的1與0",
         "answers":[
-            ["A. 電荷總數",0],
-            ["B. 化學物質的溫度",1]
+            ["電荷總數",0],
+            ["化學物質的溫度",1]
         ]
     },
     {
         "question":"下列何種方式重複資料檢測方式碰撞率最低?",
         "answers":[
-            ["A. byte-to-byte比對",1],
-            ["B. light-weight hash function",0],
-            ["C. security hash function",0]
+            ["byte-to-byte比對",1],
+            ["light-weight hash function",0],
+            ["security hash function",0]
         ]
     },
     {
         "question":"為何在進行重複資料刪除前需要將檔案進行分割",
         "answers":[
-            ["A. 運算速度較快",0],
-            ["B. 能夠找到淺在的重複檔案",1],
-            ["C. 節省空間",0]
+            ["運算速度較快",0],
+            ["能夠找到淺在的重複檔案",1],
+            ["節省空間",0]
         ]
     },
 ];

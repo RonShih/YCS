@@ -30,7 +30,7 @@ $(document).ready(function(){
                             if(grades >= 60)
                                 $("#question").text("Congradulation! you pass the test (" +grades+"%)");
                             else
-                                $("#question").text("Sorry! you failed! Here's the GUIDE!");
+                                $("#question").text("Sorry! you failed! Check out the solution!");
                             $('#options').empty();//清空選項區域
                             $('#myProgress').show();
                             move(grades);
@@ -65,7 +65,7 @@ $(document).ready(function(){
 function move(grades) {
     var elem = document.getElementById("myBar");   
     var width = 1;
-    var id = setInterval(frame, 10);
+    var id = setInterval(frame, 15);
     if(grades<60)
         elem.style.backgroundColor = 'red';
     else
