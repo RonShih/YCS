@@ -36,7 +36,7 @@ $(document).ready(function () {
         imgEnemy.onload = function () {
             for (let x in mapArray) {
                 if (mapArray[x] == 1) {
-                    ctx.drawImage(imgMountain, 32, 192, 32, 32, x % 5 * 100, Math.floor(x / 5) * 100, 100, 100);
+                    ctx.drawImage(imgMountain, 96, 192, 32, 32, x % 5 * 100, Math.floor(x / 5) * 100, 100, 100);
                 } else if (mapArray[x] == 3) {
                     ctx.drawImage(imgEnemy, 7, 40, 75, 135, x % 5 * 100, Math.floor(x / 5) * 100, 100, 100);
                 }
@@ -121,6 +121,7 @@ $(document).keydown(function (event) {
 });
 let state = [7, 122, 200, 275, 350, 418, 485, 555, 625];
 let count = 0;
+let life = 90;
 //ctx.drawImage(imgEnemy, 7, 40, 104, 135, x % 5 * 100, Math.floor(x / 5) * 100, 100, 100);
 $(document).keydown(function (event) {
     switch (event.code) {
@@ -130,17 +131,26 @@ $(document).keydown(function (event) {
                     count++;
                     ctx.clearRect(targetBlock % 5 * 100, Math.floor(targetBlock / 5) * 100, 100, 100);
                     ctx.drawImage(imgEnemy, state[count], 40, 75, 135, targetBlock % 5 * 100, Math.floor(targetBlock / 5) * 100, 100, 100);
+                    if(!$("#game").is(":animated")){
+                        $("#game").animate({left:-1}, 20).animate({top:-1}, 20)
+                        .animate({left:1}, 20).animate({top:1}, 20)
+                        .animate({left:-1}, 20).animate({top:-1}, 20)
+                        .animate({left:1}, 20).animate({top:1}, 20)//是Chaining
+                        .animate({left:-1}, 20).animate({top:-1}, 20)
+                    }                
                 }
                 else if(count >= 0){
-                    console.log(count);
                     //count = 0;
                     ctx.drawImage(imgMountain, 96, 160, 32, 32, targetBlock % 5 * 100, Math.floor(targetBlock / 5) * 100, 100, 100);
                     count = -1;
                     $("#startButton").show();
                     $("#startButton").click(function(){
                         $("#talkBox").show();
+                        $("html,body").animate({ scrollTop: document.body.scrollHeight}, 50);
                     });
                 }
+                life-=10;
+                $("#progress_bar").attr("value", life);
             }
             break;
         default:
