@@ -70,12 +70,33 @@
 
       <!-- START THE FEATURETTES -->
 
-      <hr class="featurette-divider">
-      <h1>Youtube 心情點唱機</h1>
-      <h2 id="video_text"></h2>
-      <div id="player" active></div>
+      <br><br><br>
+      <h1>Check out some materials about memory!</h1>
       <br>
-      <input type="button" id="playButton" value="Play">
+      <div id = "video_menu">
+        <select id = "selection">
+          <option value="" selected disabled hidden>影片選單</option> 
+          <!--
+          <option value="0">大一上(1061)</option>
+          <option value="1">大一下(1062)</option>
+          <option value="2">大二上(1071)</option>
+          <option value="3">大二下(1072)</option>
+          <option value="4">大三上(1081)</option>
+          <option value="5">大三下(1082)</option>
+          -->
+        </select>
+      </div>
+      <br>
+      <div id="input">
+        <input type="button" id="playButton" value="Play">
+        <input type="button" id="pauseButton" value="Pause">
+      </div>
+      <br>
+      <div id = "youtube_player">
+        <div id="player" active></div>
+        <br>
+        <h2 id="video_text"></h2>
+      </div>
       <!--mothod1
             <a><img src="..."> </a>
             <a><img src="..."> </a>

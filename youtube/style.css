@@ -1,7 +1,12 @@
-body{
+#youtube_player{
     text-align: center;    
 }
-
+#video_menu{
+    text-align: left;
+}
 h2{
     height: 32px;
+}
+#input{
+    text-align: center;
 }

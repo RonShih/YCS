@@ -1,7 +1,12 @@
 var player;
 var currentPlay = 0;
 
-function onYouTubeIframeAPIReady() {
+$("document").ready(function(){
+    for(let x = 0; x < playName.length; x++)
+        $("#selection").append("<option value=" + x + ">"+playName[x] +"</option>");
+});
+
+function onYouTubeIframeAPIReady(){
     player = new YT.Player("player", {
         height: "390",
         width: "640",
@@ -9,8 +14,6 @@ function onYouTubeIframeAPIReady() {
         playerVars: {
             "autoplay": 0,
             "controls": 0,
-            "start": playTime[currentPlay][0],
-            "end": playTime[currentPlay][1],
             "showinfo": 0,
             "rel": 0,
             "iv_load_policy": 3
@@ -25,30 +28,22 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady(event) {
     $("#playButton").click(function () {
         $("#video_text").text(player.getVideoData().title);
-        player.playVideo();
+        player.playVideo();  
+    });
+    $("#pauseButton").click(function () {
+        $("#video_text").text(player.getVideoData().title);
+        player.pauseVideo();  
     });
 }
 
 function onPlayerStateChange(event) {
-    if (Math.floor(player.getCurrentTime()) == playTime[currentPlay][1]) {
-        if (currentPlay < playList.length - 1) {
-            currentPlay++;
-            player.loadVideoById({
-                "videoId": playList[currentPlay],
-                "startSeconds": playTime[currentPlay][0],
-                "endSeconds": playTime[currentPlay][1],
-                "suggestedQuality": "large"
-            });
-        } else {
-            currentPlay = 0;
-            player.cueVideoById({
-                "videoId": playList[currentPlay],
-                "startSeconds": playTime[currentPlay][0],
-                "endSeconds": playTime[currentPlay][1],
-                "suggestedQuality": "large"
-            })
-        }
-    }
+    $("#selection").change(function(){
+        currentPlay = $('#selection').find(":selected").val();  
+        player.loadVideoById({
+            "videoId": playList[currentPlay],
+            "suggestedQuality": "large"
+        });
+    });  
     if (player.getVideoLoadedFraction() > 0) {
         $("#video_text").text(player.getVideoData().title);
     }

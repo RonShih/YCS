@@ -1,12 +1,17 @@
 //YouTube影片ID
 let playList = [    
-    "4iVW7OhZ0p8", //讓我留在你身邊
-    "MJnzEa0FSKk", //全放空
-    "7NN4RlKspW0" //飄向北方
+    "p3q5zWCw8J4",
+    "aO_kBa9DzPQ",
+    "3U2YUQhgB80",
+    "tcKCBwEPXZc",
+    "YNNmxZE50fo"
+];
+let playName = [
+    "How memory works",
+    "快閃記憶體原理",
+    "Open Channel SSD",
+    "Optane memory介紹",
+    "重複資料刪除介紹"
 ];
 //播放起訖秒數
-let playTime = [    
-    [57,60],
-    [79,83],
-    [76,80]  
-]
+
