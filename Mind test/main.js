@@ -65,11 +65,16 @@ $(document).ready(function(){
 function move(grades) {
     var elem = document.getElementById("myBar");   
     var width = 1;
-    var id = setInterval(frame, 15);
+    var id;
     if(grades<60)
         elem.style.backgroundColor = 'red';
     else
         elem.style.backgroundColor = '#4CAF50';
+    if(grades == 0){
+        elem.style.width = width + '%';
+        return;
+    }
+    id = setInterval(frame, 15);
     function frame() {
       if (width >= grades) {
         clearInterval(id);
