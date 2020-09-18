@@ -4,6 +4,8 @@ var currentPlay = 0;
 $("document").ready(function(){
     for(let x = 0; x < playName.length; x++)
         $("#selection").append("<option value=" + x + ">"+playName[x] +"</option>");
+    $("#selection").hide();
+    $("#pauseButton").hide();
 });
 
 function onYouTubeIframeAPIReady(){
@@ -28,6 +30,8 @@ function onYouTubeIframeAPIReady(){
 function onPlayerReady(event) {
     $("#playButton").click(function () {
         $("#video_text").text(player.getVideoData().title);
+        $("#selection").show();
+        $("#pauseButton").show();
         player.playVideo();  
     });
     $("#pauseButton").click(function () {
