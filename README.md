@@ -1,1 +1,1 @@
-Just a boring personal website of a final project from my college class :)
+Just a boring [personal website](https://ronshih.github.io/YCS/) of a final project from my college class :)
